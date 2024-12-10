@@ -1,4 +1,4 @@
-Connect4 Advanced AI - README
+Connect4 Advanced AI 
 
 Welcome to Connect4 Advanced AI, a revamped version of the classic Connect4 game with enhanced artificial intelligence and player customization features. This project introduces an advanced AI opponent and user-friendly improvements to make the game more challenging and enjoyable.
 
