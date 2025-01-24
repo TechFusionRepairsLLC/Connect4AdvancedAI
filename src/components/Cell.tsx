@@ -1,29 +1,35 @@
 import React from 'react';
-import { CellValue, GameColors } from '../types/game';
+import { CellValue, GameColors, Theme } from '../types/game';
+import { getThemeStyles } from '../utils/themeStyles';
 
 interface CellProps {
   value: CellValue;
   colors: GameColors;
+  theme: Theme;
 }
 
-const Cell: React.FC<CellProps> = ({ value, colors }) => {
+const Cell: React.FC<CellProps> = ({ value, colors, theme }) => {
+  const themeStyles = getThemeStyles(theme);
+
   const getCellStyle = () => {
     if (!value) {
       return {
-        backgroundColor: '#ffffff',
-        border: '2px solid rgba(0, 0, 0, 0.1)',
+        backgroundColor: themeStyles.emptyCellColor,
+        border: themeStyles.cellBorder,
+        boxShadow: themeStyles.cellShadow,
       };
     }
     return {
       backgroundColor: value === 1 ? colors.player1 : colors.player2,
-      border: '2px solid rgba(0, 0, 0, 0.1)',
+      border: themeStyles.cellBorder,
+      boxShadow: themeStyles.cellShadow,
     };
   };
 
   return (
-    <div className="w-14 h-14 p-1">
+    <div className="w-full h-full p-1">
       <div
-        className="w-full h-full rounded-full transition-colors duration-300 shadow-md transform hover:scale-105"
+        className="w-full h-full rounded-full transition-all duration-300"
         style={getCellStyle()}
       />
     </div>
